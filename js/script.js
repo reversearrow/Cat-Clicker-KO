@@ -20,9 +20,10 @@ var Cat = function(){
 }
 
 var ViewModel = function() {
+  var self = this;
   this.cat = new Cat();
   this.addClick = function addClick(){
-    this.cat.clicks(this.cat.clicks() + 1)
+    self.cat.clicks(self.cat.clicks() + 1)
 
   };
 }
