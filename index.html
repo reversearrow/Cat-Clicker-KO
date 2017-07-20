@@ -9,13 +9,13 @@
     <h1>Cat Clicker</h1>
   </div>
   <div>
-    <h4 data-bind="text: name"></h4>
-    <h4 data-bind="text: levels"></h4>
-    <h5>Number of Clicks <span data-bind="text: clicks"></span></h5>
-    <img src="" data-bind="click: addClick, attr: {src: imgSrc}">
+    <h4 data-bind="text: cat.name"></h4>
+    <h4 data-bind="text: cat.levels"></h4>
+    <h5>Number of Clicks <span data-bind="text: cat.clicks"></span></h5>
+    <img src="" data-bind="click: addClick, attr: {src: cat.imgSrc}">
     <br>
     <h4> Nicknames </h4>
-    <ul data-bind="foreach: nickNames">
+    <ul data-bind="foreach: cat.nickNames">
       <li data-bind="text: $data"></li>
     </ul>
   </div>

@@ -1,5 +1,4 @@
-"use strict";
-function clickCounterViewModel() {
+var Cat = function(){
   this.clicks = ko.observable(0);
   this.name = ko.observable("Kitty1");
   this.imgSrc = ko.observable("img/img1.jpg");
@@ -18,10 +17,14 @@ function clickCounterViewModel() {
       this.levels("Dead")
     }
   }, this);
+}
+
+var ViewModel = function() {
+  this.cat = new Cat();
   this.addClick = function addClick(){
-    this.clicks(this.clicks() + 1)
+    this.cat.clicks(this.cat.clicks() + 1)
 
   };
 }
 
-ko.applyBindings(new clickCounterViewModel);
+ko.applyBindings(new ViewModel());
