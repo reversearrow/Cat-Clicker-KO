@@ -13,6 +13,11 @@
     <h4 data-bind="text: levels"></h4>
     <h5>Number of Clicks <span data-bind="text: clicks"></span></h5>
     <img src="" data-bind="click: addClick, attr: {src: imgSrc}">
+    <br>
+    <h4> Nicknames </h4>
+    <ul data-bind="foreach: nickNames">
+      <li data-bind="text: $data"></li>
+    </ul>
   </div>
 </body>
     <script src="js/script.js"></script>

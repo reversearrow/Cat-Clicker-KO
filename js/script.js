@@ -4,6 +4,7 @@ function clickCounterViewModel() {
   this.name = ko.observable("Kitty1");
   this.imgSrc = ko.observable("img/img1.jpg");
   this.levels = ko.observable()
+  this.nickNames = ko.observable(["Cute1","Cute2","Cute3"])
   this.computeLevels = ko.computed(function(){
     if(this.clicks() <= 10){
       this.levels("Infant");
