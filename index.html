@@ -8,6 +8,12 @@
   <div>
     <h1>Cat Clicker</h1>
   </div>
+  <div>
+      <h4>Cat List</h4>
+      <ul data-bind="foreach: allCats()">
+        <li data-bind="text: $data.name, click: $parent.displayClickedCat.bind($data)"> </li>
+      </ul>
+  </div>
   <div data-bind="with: cat">
     <h4 data-bind="text: name"></h4>
     <h4 data-bind="text: levels"></h4>

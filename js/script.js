@@ -1,9 +1,24 @@
-var Cat = function(){
-  this.clicks = ko.observable(0);
-  this.name = ko.observable("Kitty1");
-  this.imgSrc = ko.observable("img/img1.jpg");
+var catData = [
+  {
+    name: "Kitty1",
+    imgSrc: "img/img1.jpg",
+    clicks: 0,
+    nickNames: ["Cute1","Cute2","Cute3"]
+  },
+  {
+    name: "Kitty2",
+    imgSrc: "img/img2.jpg",
+    clicks: 0,
+    nickNames: ["Tabby","Cutie"]
+  }
+];
+
+var Cat = function(data){
+  this.clicks = ko.observable(data.clicks);
+  this.name = ko.observable(data.name);
+  this.imgSrc = ko.observable(data.imgSrc);
   this.levels = ko.observable()
-  this.nickNames = ko.observable(["Cute1","Cute2","Cute3"])
+  this.nickNames = ko.observable(data.nickNames)
   this.computeLevels = ko.computed(function(){
     if(this.clicks() <= 10){
       this.levels("Infant");
@@ -21,11 +36,22 @@ var Cat = function(){
 
 var ViewModel = function() {
   var self = this;
-  this.cat = new Cat();
-  this.addClick = function addClick(){
-    self.cat.clicks(self.cat.clicks() + 1)
 
+  this.allCats = ko.observable([]);
+
+  for(i=0; i<catData.length;i++){
+    self.allCats().push(new Cat(catData[i]))
+  }
+
+  this.cat = ko.observable(self.allCats()[0]);
+
+  this.addClick = function(){
+    self.cat().clicks(self.cat().clicks() + 1)
   };
+
+  this.displayClickedCat = function(data){
+    self.cat(data)
+  }
 }
 
 ko.applyBindings(new ViewModel());
